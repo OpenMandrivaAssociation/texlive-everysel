@@ -1,6 +1,6 @@
 Name:		texlive-everysel
 Version:	57489
-Release:	1
+Release:	2
 Summary:	Provides hooks into \selectfont
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/everysel
