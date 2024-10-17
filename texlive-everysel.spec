@@ -3,7 +3,7 @@ Version:	57489
 Release:	2
 Summary:	Provides hooks into \selectfont
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/everysel
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/everysel
 License:	lppl1.3c
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.doc.r%{version}.tar.xz
