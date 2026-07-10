@@ -1,45 +1,29 @@
-Name:		texlive-everysel
-Version:	57489
-Release:	2
+%global tl_name everysel
+%global tl_revision 57489
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.1
+Release:	%{tl_revision}.1
 Summary:	Provides hooks into \selectfont
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/everysel
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/everysel.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package provided hooks whose arguments are executed just
-after LaTeX has loaded a new font by means of \selectfont. It
-has become obsolete with LaTeX versions 2021/01/05 or newer,
-since LaTeX now provides its own hooks to fulfill this task.
-For newer versions of LaTeX everysel only provides macros using
-LaTeX's hook management due to compatibility reasons. See
-lthooks-doc.pdf for instructions how to use lthooks instead of
-everysel.
+The package provided hooks whose arguments are executed just after LaTeX
+has loaded a new font by means of \selectfont. It has become obsolete
+with LaTeX versions 2021/01/05 or newer, since LaTeX now provides its
+own hooks to fulfill this task. For newer versions of LaTeX everysel
+only provides macros using LaTeX's hook management due to compatibility
+reasons. See lthooks-doc.pdf for instructions how to use lthooks instead
+of everysel.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/everysel
-%{_texmfdistdir}/tex/latex/everysel
-%doc %{_texmfdistdir}/doc/latex/everysel
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
